@@ -22,3 +22,11 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 require __DIR__.'/auth.php';
+
+// お問い合わせ機能
+Route::get('/contact/index', [App\Http\Controllers\Contact\ContactController::class, 'index'])
+    ->name('contact.index');
+Route::post('/contact/confirm', [App\Http\Controllers\Contact\ContactController::class, 'confirm'])
+    ->name('contact.confirm');
+Route::post('/contact/done', [App\Http\Controllers\Contact\ContactController::class, 'done'])
+    ->name('contact.done');
