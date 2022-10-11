@@ -72,10 +72,9 @@
                                 <div class="sm:col-span-2 text-gray-800">
                                     <label for="pref" class="inline-block text-gray-800 text-sm sm:text-base mb-2">都道府県<span class="text-red-500">（必須）</span></label>
                                     <select class="block w-full mt-1 rounded-md border shadow-sm focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2">
-                                        <option>北海道</option>
-                                        <option>青森</option>
-                                        <option>秋田</option>
-                                        <option>岩手</option>
+                                        @foreach ($pref as $key => $val)
+                                            <option value="{{ $key }}">{{ $val }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
 
