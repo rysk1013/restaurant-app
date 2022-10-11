@@ -60,18 +60,27 @@
                             <form action="{{ route('contact.confirm') }}" method="post" class="max-w-screen-md grid sm:grid-cols-2 gap-4 mx-auto" novalidate>
                                 @csrf
                                 <div class="sm:col-span-2">
+                                    @error('name')
+                                        <p class="text-red-500">{{ $message }}</p>
+                                    @enderror
                                     <label for="name" class="inline-block text-gray-800 text-sm sm:text-base mb-2">名前<span class="text-red-500">（必須）</span></label>
                                     <input type="text" name="name" class="w-full text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2" />
                                 </div>
 
                                 <div class="sm:col-span-2">
+                                    @error('kana')
+                                        <p class="text-red-500">{{ $message }}</p>
+                                    @enderror
                                     <label for="kana" class="inline-block text-gray-800 text-sm sm:text-base mb-2">フリガナ<span class="text-red-500">（必須）</span></label>
                                     <input type="text" name="kana" class="w-full text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2" />
                                 </div>
 
                                 <div class="sm:col-span-2 text-gray-800">
+                                    @error('pref')
+                                        <p class="text-red-500">{{ $message }}</p>
+                                    @enderror
                                     <label for="pref" class="inline-block text-gray-800 text-sm sm:text-base mb-2">都道府県<span class="text-red-500">（必須）</span></label>
-                                    <select class="block w-full mt-1 rounded-md border shadow-sm focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2">
+                                    <select name="pref" class="block w-full mt-1 rounded-md border shadow-sm focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2">
                                         @foreach ($pref as $key => $val)
                                             <option value="{{ $key }}">{{ $val }}</option>
                                         @endforeach
@@ -79,11 +88,17 @@
                                 </div>
 
                                 <div class="sm:col-span-2">
+                                    @error('city')
+                                        <p class="text-red-500">{{ $message }}</p>
+                                    @enderror
                                     <label for="city" class="inline-block text-gray-800 text-sm sm:text-base mb-2">市区町村<span class="text-red-500">（必須）</span></label>
                                     <input type="text" name="city" class="w-full text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2" />
                                 </div>
 
                                 <div class="sm:col-span-2">
+                                    @error('address')
+                                        <p class="text-red-500">{{ $message }}</p>
+                                    @enderror
                                     <label for="address" class="inline-block text-gray-800 text-sm sm:text-base mb-2">番地<span class="text-red-500">（必須）</span></label>
                                     <input type="text" name="address" class="w-full text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2" />
                                 </div>
@@ -104,16 +119,25 @@
                                 </div>
 
                                 <div class="sm:col-span-2">
-                                    <label for="email" class="inline-block text-gray-800 text-sm sm:text-base mb-2">メールアドレス</label>
+                                    @error('email')
+                                        <p class="text-red-500">{{ $message }}</p>
+                                    @enderror
+                                    <label for="email" class="inline-block text-gray-800 text-sm sm:text-base mb-2">メールアドレス<span class="text-red-500">（必須）</span></label>
                                     <input type="email" name="email" class="w-full text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2" />
                                 </div>
 
                                 <div class="sm:col-span-2">
-                                    <label for="email_confirm" class="inline-block text-gray-800 text-sm sm:text-base mb-2">メールアドレスの確認</label>
-                                    <input type="text" name="email_confirm" class="w-full text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2" />
+                                    @error('email_confirmation')
+                                        <p class="text-red-500">{{ $message }}</p>
+                                    @enderror
+                                    <label for="email_confirmation" class="inline-block text-gray-800 text-sm sm:text-base mb-2">メールアドレスの確認<span class="text-red-500">（必須）</span></label>
+                                    <input type="text" name="email_confirmation" class="w-full text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2" />
                                 </div>
 
                                 <div class="sm:col-span-2">
+                                    @error('inquiry')
+                                        <p class="text-red-500">{{ $message }}</p>
+                                    @enderror
                                     <label for="inquiry" class="inline-block text-gray-800 text-sm sm:text-base mb-2">お問い合わせ内容<span class="text-red-500">（必須）</span></label>
                                     <textarea name="inquiry" class="w-full text-gray-800 h-64 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2"></textarea>
                                 </div>

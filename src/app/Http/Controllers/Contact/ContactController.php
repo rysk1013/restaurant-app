@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Contact;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Constants\ContactConstants;
+use App\Http\Requests\contact\ContactRequest;
 
 class ContactController extends Controller
 {
@@ -14,7 +15,7 @@ class ContactController extends Controller
             ->with('pref', ContactConstants::PREF);
     }
 
-    public function confirm()
+    public function confirm(ContactRequest $request)
     {
         return view('contact.confirm');
     }
