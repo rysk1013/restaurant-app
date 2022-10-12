@@ -61,62 +61,73 @@
                                 @csrf
                                 <div class="sm:col-span-2">
                                     <label for="name" class="inline-block text-gray-800 text-sm sm:text-base mb-2">名前</label>
-                                    <input disabled type="text" name="name" class="w-full bg-gray-400 text-gray-50 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2" />
+                                    <input disabled type="text" value="{{ $posts['name'] }}" class="w-full bg-gray-400 text-gray-50 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2" />
+                                    <input type="hidden" name="name" value="{{ $posts['name'] }}" class="w-full bg-gray-400 text-gray-50 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2" />
                                 </div>
 
                                 <div class="sm:col-span-2">
                                     <label for="kana" class="inline-block text-gray-800 text-sm sm:text-base mb-2">フリガナ</label>
-                                    <input disabled type="text" name="kana" class="w-full bg-gray-400 text-gray-50 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2" />
+                                    <input disabled type="text" value="{{ $posts['kana'] }}" class="w-full bg-gray-400 text-gray-50 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2" />
+                                    <input type="hidden" name="kana" value="{{ $posts['kana'] }}" class="w-full bg-gray-400 text-gray-50 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2" />
                                 </div>
 
                                 <div class="sm:col-span-2">
                                     <label for="pref" class="inline-block text-gray-800 text-sm sm:text-base mb-2">都道府県</label>
-                                    <input disabled type="text" name="pref" class="w-full bg-gray-400 text-gray-50 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2" />
+                                    <input disabled type="text" value="{{ $pref[$posts['pref']] }}" class="w-full bg-gray-400 text-gray-50 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2" />
+                                    <input type="hidden" name="pref" value="{{ $pref[$posts['pref']] }}" class="w-full bg-gray-400 text-gray-50 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2" />
                                 </div>
 
                                 <div class="sm:col-span-2">
                                     <label for="city" class="inline-block text-gray-800 text-sm sm:text-base mb-2">市区町村</label>
-                                    <input disabled type="text" name="city" class="w-full bg-gray-400 text-gray-50 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2" />
+                                    <input disabled type="text" value="{{ $posts['city'] }}" class="w-full bg-gray-400 text-gray-50 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2" />
+                                    <input type="hidden" name="city" value="{{ $posts['city'] }}" class="w-full bg-gray-400 text-gray-50 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2" />
                                 </div>
 
                                 <div class="sm:col-span-2">
                                     <label for="address" class="inline-block text-gray-800 text-sm sm:text-base mb-2">番地</label>
-                                    <input disabled type="text" name="address" class="w-full bg-gray-400 text-gray-50 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2" />
+                                    <input disabled type="text" value="{{ $posts['address'] }}" class="w-full bg-gray-400 text-gray-50 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2" />
+                                    <input type="hidden" name="address" value="{{ $posts['address'] }}" class="w-full bg-gray-400 text-gray-50 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2" />
                                 </div>
 
-                                <div class="sm:col-span-2">
-                                    <label for="apartment" class="inline-block text-gray-800 text-sm sm:text-base mb-2">マンション名等</label>
-                                    <input disabled type="text" name="apartment" class="w-full bg-gray-400 text-gray-50 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2" />
-                                </div>
+                                @if (!empty($posts['apartment']))
+                                    <div class="sm:col-span-2">
+                                        <label for="apartment" class="inline-block text-gray-800 text-sm sm:text-base mb-2">マンション名等</label>
+                                        <input disabled type="text" value="{{ $posts['apartment'] }}" class="w-full bg-gray-400 text-gray-50 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2" />
+                                        <input type="hidden" name="apartment" value="{{ $posts['apartment'] }}" class="w-full bg-gray-400 text-gray-50 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2" />
+                                    </div>
+                                @endif
 
-                                <div class="sm:col-span-2">
-                                    <label for="age" class="block text-gray-800 text-sm sm:text-base mb-2">年齢</label>
-                                    <input disabled type="text" name="age" class="w-20 bg-gray-400 text-gray-50 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2" />
-                                </div>
+                                @if (!empty($posts['age']))
+                                    <div class="sm:col-span-2">
+                                        <label for="age" class="block text-gray-800 text-sm sm:text-base mb-2">年齢</label>
+                                        <input disabled type="text" value="{{ $posts['age'] }}" class="w-20 bg-gray-400 text-gray-50 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2" />
+                                        <input type="hidden" name="age" value="{{ $posts['age'] }}" class="w-20 bg-gray-400 text-gray-50 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2" />
+                                    </div>
+                                @endif
 
-                                <div class="sm:col-span-2">
-                                    <label for="tel" class="block text-gray-800 text-sm sm:text-base mb-2">電話番号</label>
-                                    <input disabled type="text" name="tel" class="w-2/4 bg-gray-400 text-gray-50 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2" />
-                                </div>
+                                @if (!empty($posts['tel']))
+                                    <div class="sm:col-span-2">
+                                        <label for="tel" class="block text-gray-800 text-sm sm:text-base mb-2">電話番号</label>
+                                        <input disabled type="text" value="{{ $posts['tel'] }}"  class="w-2/4 bg-gray-400 text-gray-50 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2" />
+                                        <input type="hidden" name="tel" value="{{ $posts['tel'] }}"  class="w-2/4 bg-gray-400 text-gray-50 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2" />
+                                    </div>
+                                @endif
 
                                 <div class="sm:col-span-2">
                                     <label for="email" class="inline-block text-gray-800 text-sm sm:text-base mb-2">メールアドレス</label>
-                                    <input disabled type="email" name="email" class="w-full bg-gray-400 text-gray-50 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2" />
-                                </div>
-
-                                <div class="sm:col-span-2">
-                                    <label for="email_confirm" class="inline-block text-gray-800 text-sm sm:text-base mb-2">メールアドレスの確認</label>
-                                    <input disabled type="text" name="email_confirm" class="w-full bg-gray-400 text-gray-50 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2" />
+                                    <input disabled type="email" value="{{ $posts['email'] }}" class="w-full bg-gray-400 text-gray-50 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2" />
+                                    <input type="hidden" name="email" value="{{ $posts['email'] }}" class="w-full bg-gray-400 text-gray-50 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2" />
                                 </div>
 
                                 <div class="sm:col-span-2">
                                     <label for="inquiry" class="inline-block text-gray-800 text-sm sm:text-base mb-2">お問い合わせ内容</label>
-                                    <textarea disabled name="inquiry" class="w-full h-64 bg-gray-400 text-gray-50 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2"></textarea>
+                                    <textarea disabled name="inquiry" class="w-full h-64 bg-gray-400 text-gray-50 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2">{{ $posts['inquiry'] }}</textarea>
+                                    <input type="hidden" name="inquiry" value="{{ $posts['inquiry'] }}" class="w-full bg-gray-400 text-gray-50 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2" />
                                 </div>
 
                                 <div class="sm:col-span-2 flex justify-between items-center">
                                     <button name="modify" type="submit" class="inline-block bg-indigo-500 hover:bg-indigo-600 active:bg-indigo-700 focus-visible:ring ring-indigo-300 text-white text-sm md:text-base font-semibold text-center rounded-lg outline-none transition duration-100 px-8 py-3">修正する</button>
-                                    <button name="send" type="submit" class="inline-block bg-indigo-500 hover:bg-indigo-600 active:bg-indigo-700 focus-visible:ring ring-indigo-300 text-white text-sm md:text-base font-semibold text-center rounded-lg outline-none transition duration-100 px-8 py-3">送信する</button>
+                                    <button name="send" type="submit" class="inline-block bg-green-500 hover:bg-green-600 active:bg-green-700 focus-visible:ring bg-green-300 text-white text-sm md:text-base font-semibold text-center rounded-lg outline-none transition duration-100 px-8 py-3">送信する</button>
                                 </div>
 
                                 <p class="text-gray-400 text-xs">By signing up to our newsletter you agree to our <a href="#" class="hover:text-indigo-500 active:text-indigo-600 underline transition duration-100">Privacy Policy</a>.</p>

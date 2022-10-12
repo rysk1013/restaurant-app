@@ -17,11 +17,20 @@ class ContactController extends Controller
 
     public function confirm(ContactRequest $request)
     {
-        return view('contact.confirm');
+        return view('contact.confirm')
+            ->with([
+                'pref' => ContactConstant::PREF,
+                'posts' => $request,
+            ]);
     }
 
-    public function done()
+    public function done(Request $request)
     {
+        if (isset($request['modify'])) {
+            return redirect()->route('contact.index')
+                ->withInput();
+        }
+
         return view('contact.done');
     }
 }

@@ -64,7 +64,7 @@
                                         <p class="text-red-500">{{ $message }}</p>
                                     @enderror
                                     <label for="name" class="inline-block text-gray-800 text-sm sm:text-base mb-2">名前<span class="text-red-500">（必須）</span></label>
-                                    <input type="text" name="name" class="w-full text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2" />
+                                    <input type="text" name="name" value="{{ old('name') }}" class="w-full text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2" />
                                 </div>
 
                                 <div class="sm:col-span-2">
@@ -72,7 +72,7 @@
                                         <p class="text-red-500">{{ $message }}</p>
                                     @enderror
                                     <label for="kana" class="inline-block text-gray-800 text-sm sm:text-base mb-2">フリガナ<span class="text-red-500">（必須）</span></label>
-                                    <input type="text" name="kana" class="w-full text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2" />
+                                    <input type="text" name="kana" value="{{ old('kana') }}" class="w-full text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2" />
                                 </div>
 
                                 <div class="sm:col-span-2 text-gray-800">
@@ -92,7 +92,7 @@
                                         <p class="text-red-500">{{ $message }}</p>
                                     @enderror
                                     <label for="city" class="inline-block text-gray-800 text-sm sm:text-base mb-2">市区町村<span class="text-red-500">（必須）</span></label>
-                                    <input type="text" name="city" class="w-full text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2" />
+                                    <input type="text" name="city" value="{{ old('city') }}" class="w-full text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2" />
                                 </div>
 
                                 <div class="sm:col-span-2">
@@ -100,22 +100,22 @@
                                         <p class="text-red-500">{{ $message }}</p>
                                     @enderror
                                     <label for="address" class="inline-block text-gray-800 text-sm sm:text-base mb-2">番地<span class="text-red-500">（必須）</span></label>
-                                    <input type="text" name="address" class="w-full text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2" />
+                                    <input type="text" name="address" value="{{ old('address') }}" class="w-full text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2" />
                                 </div>
 
                                 <div class="sm:col-span-2">
                                     <label for="apartment" class="inline-block text-gray-800 text-sm sm:text-base mb-2">マンション名等</label>
-                                    <input type="text" name="apartment" class="w-full text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2" />
+                                    <input type="text" name="apartment" value="{{ old('apartment') }}" class="w-full text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2" />
                                 </div>
 
                                 <div class="sm:col-span-2">
                                     <label for="age" class="block text-gray-800 text-sm sm:text-base mb-2">年齢</label>
-                                    <input type="text" name="age" class="w-20 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2" />
+                                    <input type="text" name="age" value="{{ old('age') }}" class="w-20 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2" />
                                 </div>
 
                                 <div class="sm:col-span-2">
                                     <label for="tel" class="block text-gray-800 text-sm sm:text-base mb-2">電話番号</label>
-                                    <input type="text" name="tel" class="w-2/4 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2" />
+                                    <input type="text" name="tel" value="{{ old('tel') }}" class="w-2/4 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2" />
                                 </div>
 
                                 <div class="sm:col-span-2">
@@ -123,7 +123,7 @@
                                         <p class="text-red-500">{{ $message }}</p>
                                     @enderror
                                     <label for="email" class="inline-block text-gray-800 text-sm sm:text-base mb-2">メールアドレス<span class="text-red-500">（必須）</span></label>
-                                    <input type="email" name="email" class="w-full text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2" />
+                                    <input type="email" name="email" value="{{ old('email') }}" class="w-full text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2" />
                                 </div>
 
                                 <div class="sm:col-span-2">
@@ -139,11 +139,11 @@
                                         <p class="text-red-500">{{ $message }}</p>
                                     @enderror
                                     <label for="inquiry" class="inline-block text-gray-800 text-sm sm:text-base mb-2">お問い合わせ内容<span class="text-red-500">（必須）</span></label>
-                                    <textarea name="inquiry" class="w-full text-gray-800 h-64 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2"></textarea>
+                                    <textarea name="inquiry" class="w-full text-gray-800 h-64 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2">{{ old('inquiry') }}</textarea>
                                 </div>
 
                                 <div class="sm:col-span-2 flex justify-between items-center">
-                                    <button name="send" type="submit" class="inline-block bg-indigo-500 hover:bg-indigo-600 active:bg-indigo-700 focus-visible:ring ring-indigo-300 text-white text-sm md:text-base font-semibold text-center rounded-lg outline-none transition duration-100 px-8 py-3">内容を確認する</button>
+                                    <button name="send" type="submit" class="inline-block bg-green-500 hover:bg-green-600 active:bg-green-700 focus-visible:ring bg-green-300 text-white text-sm md:text-base font-semibold text-center rounded-lg outline-none transition duration-100 px-8 py-3">内容を確認する</button>
                                 </div>
 
                                 <p class="text-gray-400 text-xs">By signing up to our newsletter you agree to our <a href="#" class="hover:text-indigo-500 active:text-indigo-600 underline transition duration-100">Privacy Policy</a>.</p>
