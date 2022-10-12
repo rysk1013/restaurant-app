@@ -2,7 +2,7 @@
 
 namespace App\Constants;
 
-class ContactConstants
+class ContactConstant
 {
     const PREF = [
         '1'=>'北海道',
