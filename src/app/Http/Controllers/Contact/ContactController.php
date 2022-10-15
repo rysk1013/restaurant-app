@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Contact;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use App\Constants\ContactConstant;
 use App\Http\Requests\contact\ContactRequest;
+use App\Mail\ContactMail;
 
 class ContactController extends Controller
 {
@@ -30,6 +32,8 @@ class ContactController extends Controller
             return redirect()->route('contact.index')
                 ->withInput();
         }
+
+        Mail::send(new ContactMail($request));
 
         return view('contact.done');
     }
