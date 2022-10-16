@@ -19,6 +19,8 @@ class ContactController extends Controller
 
     public function confirm(ContactRequest $request)
     {
+        $request->session()->regenerateToken();
+
         return view('contact.confirm')
             ->with([
                 'pref' => ContactConstant::PREF,
@@ -34,6 +36,8 @@ class ContactController extends Controller
         }
 
         Mail::send(new ContactMail($request));
+
+        $request->session()->regenerateToken();
 
         return view('contact.done');
     }
