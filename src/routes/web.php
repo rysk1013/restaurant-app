@@ -22,9 +22,13 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 require __DIR__.'/auth.php';
-require __DIR__.'/admin.php';
 
-// お問い合わせ機能
+// 管理ユーザ
+Route::prefix('admin')->name('admin.')->group(function () {
+    require __DIR__.'/admin.php';
+});
+
+// お問い合わせ
 Route::get('/contact/index', [App\Http\Controllers\Contact\ContactController::class, 'index'])
     ->name('contact.index');
 Route::post('/contact/confirm', [App\Http\Controllers\Contact\ContactController::class, 'confirm'])
