@@ -25,6 +25,10 @@ require __DIR__.'/auth.php';
 
 // 管理ユーザ
 Route::prefix('admin')->name('admin.')->group(function () {
+    Route::get('/top', function () {
+        return view('admin.top');
+    })->middleware(['auth:admin', 'verified'])->name('top');
+
     require __DIR__.'/admin.php';
 });
 
