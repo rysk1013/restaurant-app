@@ -32,6 +32,10 @@ Route::prefix('admin')->name('admin.')->group(function () {
     require __DIR__.'/admin.php';
 });
 
+// メニュー管理
+Route::get('/admin/menu', [App\Http\Controllers\Admin\Menu\MenusController::class, 'index'])
+    ->name('menu.index');
+
 // お問い合わせ
 Route::get('/contact/index', [App\Http\Controllers\Contact\ContactController::class, 'index'])
     ->name('contact.index');
