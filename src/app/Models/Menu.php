@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class MenuSubcategory extends Model
+class Menu extends Model
 {
     use HasFactory;
     use softDeletes;
@@ -19,13 +19,8 @@ class MenuSubcategory extends Model
         'update_user',
     ];
 
-    public function menuCategory()
+    public function menuSubcategory()
     {
-        return $this->belongsTo(MenuCategory::class);
-    }
-
-    public function menus()
-    {
-        return $this->hasMany(Menu::class);
+        return $this->belongsTo(MenuSubcategory::class);
     }
 }
