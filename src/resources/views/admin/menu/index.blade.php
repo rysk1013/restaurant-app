@@ -85,7 +85,7 @@
                                     </div>
                                 </th>
                                 <th class="bg-gray-600 p-2 text-white font-bold md:border md:border-grey-500 text-center block md:table-cell">
-                                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 border border-blue-500 rounded">新規登録</button>
+                                    <a href="{{ route('menu.create') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 border border-blue-500 rounded">新規登録</a>
                                 </th>
                             </tr>
                         </thead>

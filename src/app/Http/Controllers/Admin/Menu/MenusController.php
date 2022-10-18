@@ -36,7 +36,12 @@ class MenusController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.menu.create');
+    }
+
+    public function confirm()
+    {
+        return view('admin.menu.confirm');
     }
 
     /**
@@ -47,7 +52,7 @@ class MenusController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return view('admin.menu.done');
     }
 
     /**
