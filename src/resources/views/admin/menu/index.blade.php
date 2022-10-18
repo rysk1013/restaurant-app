@@ -49,39 +49,39 @@
                             <tr class="border border-grey-500 md:border-none block md:table-row absolute -top-full md:top-auto -left-full md:left-auto  md:relative ">
                                 <th class="bg-gray-600 p-2 text-white font-bold md:border md:border-grey-500 text-center block md:table-cell">
                                     <div class="w-full flex justify-between">
-                                        <a href="#" class="inline-block text-white font-bold">▲</a>
+                                        <a href="{{ route('menu.renderList', ['sort' => 'menus.id', 'order' => 'ASC']) }}" class="inline-block text-white font-bold">▲</a>
                                         <span class="inline-block text-white font-bold">ID</span>
-                                        <a href="#" class="inline-block text-white font-bold">▼</a>
+                                        <a href="{{ route('menu.renderList', ['sort' => 'menus.id', 'order' => 'DESC']) }}" class="inline-block text-white font-bold">▼</a>
                                     </div>
                                 </th>
                                 <th class="bg-gray-600 p-2 text-white font-bold md:border md:border-grey-500 text-center block md:table-cell">
                                     <div class="w-full flex justify-between">
-                                        <a href="#" class="inline-block text-white font-bold">▲</a>
+                                        <a href="{{ route('menu.renderList', ['sort' => 'menus.name', 'order' => 'ASC']) }}" class="inline-block text-white font-bold">▲</a>
                                         <span class="inline-block text-white font-bold">メニュー名</span>
-                                        <a href="#" class="inline-block text-white font-bold">▼</a>
+                                        <a href="{{ route('menu.renderList', ['sort' => 'menus.name', 'order' => 'DESC']) }}" class="inline-block text-white font-bold">▼</a>
                                     </div>
                                 </th>
                                 <th class="bg-gray-600 p-2 text-white font-bold md:border md:border-grey-500 text-center block md:table-cell">
                                     <div class="w-full flex justify-between">
-                                        <a href="#" class="inline-block text-white font-bold">▲</a>
+                                        <a href="{{ route('menu.renderList', ['sort' => 'menu_categories.name', 'order' => 'ASC']) }}" class="inline-block text-white font-bold">▲</a>
                                         <span class="inline-block text-white font-bold">大カテゴリ</span>
-                                        <a href="#" class="inline-block text-white font-bold">▼</a>
+                                        <a href="{{ route('menu.renderList', ['sort' => 'menu_categories.name', 'order' => 'DESC']) }}" class="inline-block text-white font-bold">▼</a>
                                     </div>
                                 </th>
                                 <th class="bg-gray-600 p-2 text-white font-bold md:border md:border-grey-500 text-center block md:table-cell">
                                     <div class="w-full flex justify-between">
-                                        <a href="#" class="inline-block text-white font-bold">▲</a>
+                                        <a href="{{ route('menu.renderList', ['sort' => 'menu_subcategories.name', 'order' => 'ASC']) }}" class="inline-block text-white font-bold">▲</a>
                                         <span class="inline-block text-white font-bold">小カテゴリ</span>
-                                        <a href="#" class="inline-block text-white font-bold">▼</a>
+                                        <a href="{{ route('menu.renderList', ['sort' => 'menu_subcategories.name', 'order' => 'DESC']) }}" class="inline-block text-white font-bold">▼</a>
                                     </div>
                                 </th>
                                 <th class="bg-gray-600 p-2 text-white font-bold md:border md:border-grey-500 text-center block md:table-cell">表示順</th>
                                 <th class="bg-gray-600 p-2 text-white font-bold md:border md:border-grey-500 text-center block md:table-cell">登録日時</th>
                                 <th class="bg-gray-600 p-2 text-white font-bold md:border md:border-grey-500 text-center block md:table-cell">
                                     <div class="w-full flex justify-between">
-                                        <a href="#" class="inline-block text-white font-bold">▲</a>
+                                        <a href="{{ route('menu.renderList', ['sort' => 'menus.updated_at', 'order' => 'ASC']) }}" class="inline-block text-white font-bold">▲</a>
                                         <span class="inline-block text-white font-bold">更新日時</span>
-                                        <a href="#" class="inline-block text-white font-bold">▼</a>
+                                        <a href="{{ route('menu.renderList', ['sort' => 'menus.updated_at', 'order' => 'DESC']) }}" class="inline-block text-white font-bold">▼</a>
                                     </div>
                                 </th>
                                 <th class="bg-gray-600 p-2 text-white font-bold md:border md:border-grey-500 text-center block md:table-cell">
@@ -90,26 +90,30 @@
                             </tr>
                         </thead>
                         <tbody class="block md:table-row-group">
-                            <tr class="bg-white border border-grey-500 md:border-none block md:table-row">
-                                <td class="p-2 md:border md:border-grey-500 text-center block md:table-cell">1</td>
-                                <td class="p-2 md:border md:border-grey-500 text-center block md:table-cell">ラーメン</td>
-                                <td class="p-2 md:border md:border-grey-500 text-center block md:table-cell">メイン</td>
-                                <td class="p-2 md:border md:border-grey-500 text-center block md:table-cell">麺類</td>
-                                <td class="p-2 md:border md:border-grey-500 text-center block md:table-cell">3</td>
-                                <td class="p-2 md:border md:border-grey-500 text-center block md:table-cell">022/10/17</td>
-                                <td class="p-2 md:border md:border-grey-500 text-center block md:table-cell">022/10/17</td>
-                                <td class="p-2 md:border md:border-grey-500 text-center block md:table-cell">
-                                    <a href="#" class="bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-2 border border-green-500 rounded">編集</a>
-                                    <form action="#" method="post" novalidate class="inline-block">
-                                        <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 border border-red-500 rounded" onclick="return  confirm('本当に削除しますか？')">削除</button>
-                                    </form>
-                                </td>
-                            </tr>
-
-                            {{-- メニューがないときの表示 --}}
-                            <tr class="bg-white border border-grey-500 md:border-none block md:table-row">
-                                <td colspan="8" class="p-2 md:border md:border-grey-500 text-center block md:table-cell">メニューがありません。</td>
-                            </tr>
+                            @if (!empty($menus))
+                                @foreach ($menus as $menu)
+                                    <tr class="bg-white border border-grey-500 md:border-none block md:table-row">
+                                        <td class="p-2 md:border md:border-grey-500 text-center block md:table-cell">{{ $menu->m_id }}</td>
+                                        <td class="p-2 md:border md:border-grey-500 text-center block md:table-cell">{{ $menu->m_name }}</td>
+                                        <td class="p-2 md:border md:border-grey-500 text-center block md:table-cell">{{ $menu->c_name }}</td>
+                                        <td class="p-2 md:border md:border-grey-500 text-center block md:table-cell">{{ $menu->s_name }}</td>
+                                        <td class="p-2 md:border md:border-grey-500 text-center block md:table-cell">{{ $menu->m_turn }}</td>
+                                        <td class="p-2 md:border md:border-grey-500 text-center block md:table-cell">{{ $menu->m_created }}</td>
+                                        <td class="p-2 md:border md:border-grey-500 text-center block md:table-cell">{{ $menu->m_updated }}</td>
+                                        <td class="p-2 md:border md:border-grey-500 text-center block md:table-cell">
+                                            <a href="#" class="bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-2 border border-green-500 rounded">編集</a>
+                                            <form action="#" method="post" novalidate class="inline-block">
+                                                <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 border border-red-500 rounded" onclick="return  confirm('本当に削除しますか？')">削除</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            @else
+                                {{-- メニューがないときの表示 --}}
+                                <tr class="bg-white border border-grey-500 md:border-none block md:table-row">
+                                    <td colspan="8" class="p-2 md:border md:border-grey-500 text-center block md:table-cell">メニューがありません。</td>
+                                </tr>
+                            @endif
                         </tbody>
                     </table>
                 </main>

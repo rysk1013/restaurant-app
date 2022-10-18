@@ -35,6 +35,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
 // メニュー管理
 Route::get('/admin/menu', [App\Http\Controllers\Admin\Menu\MenusController::class, 'index'])
     ->name('menu.index');
+Route::get('/admin/menu/renderList', [App\Http\Controllers\Admin\Menu\MenusController::class, 'renderList'])
+    ->name('menu.renderList');
 
 // お問い合わせ
 Route::get('/contact/index', [App\Http\Controllers\Contact\ContactController::class, 'index'])

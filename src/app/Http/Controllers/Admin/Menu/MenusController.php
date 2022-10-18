@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin\Menu;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Services\MenuService;
 
 class MenusController extends Controller
 {
@@ -12,9 +13,20 @@ class MenusController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(MenuService $menuService)
     {
-        return view('admin.menu.index');
+        $menus = $menuService->getMenusForAdmin();
+
+        return view('admin.menu.index')
+            ->with('menus', $menus);
+    }
+
+    public function renderList(Request $request, MenuService $menuService)
+    {
+        $menus = $menuService->renderMenuList($request->query('sort'), $request->query('order'));
+
+        return view('admin.menu.index')
+            ->with('menus', $menus);
     }
 
     /**
