@@ -49,7 +49,7 @@
                             <div class="grid sm:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-8">
                                 <!-- feature - start -->
                                 <div class="flex flex-col border rounded-lg p-4 md:p-6">
-                                    <a href="#" class="text-center text-lg md:text-xl font-semibold mb-2">〇〇管理</a>
+                                    <a href="{{ route('menu.index') }}" class="text-center text-lg md:text-xl font-semibold mb-2">メニュー管理</a>
                                 </div>
                                 <!-- feature - end -->
 

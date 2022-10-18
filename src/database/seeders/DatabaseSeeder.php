@@ -22,5 +22,8 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         $this->call(AdminSeeder::class);
+        $this->call(MenuCategorySeeder::class);
+        $this->call(MenuSubcategorySeeder::class);
+        $this->call(MenuSeeder::class);
     }
 }
