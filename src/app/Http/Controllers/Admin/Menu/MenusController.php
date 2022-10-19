@@ -111,12 +111,16 @@ class MenusController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id, MenuService $menuService)
     {
         if (isset($request['modify'])) {
             return redirect()->route('menu.edit', ['id' => $id])
                 ->withInput();
         }
+
+        $menuService->updateMenu($request);
+
+        $request->session()->regenerateToken();
 
         return view('admin.menu.edit_done');
     }

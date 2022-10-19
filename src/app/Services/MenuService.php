@@ -65,8 +65,13 @@ class MenuService
         ->orderBy($sort, $order)
         ->get();
     }
-
-    public function saveMenu($posts)
+    /**
+     * insert menu
+     *
+     * @param [object] $posts
+     * @return void
+     */
+    public function saveMenu(object $posts): void
     {
         $menu = new Menu();
         $menu->name = $posts->menu_name;
@@ -76,5 +81,24 @@ class MenuService
         $menu->description = $posts->description;
         $menu->create_user = 1;
         $menu->save();
+    }
+
+    /**
+     * update menu
+     *
+     * @param [object] $posts
+     * @return void
+     */
+    public function updateMenu(object $posts): void
+    {
+        $menu = Menu::where('id', $posts['id'])->firstOrFail();
+        $menu->name = $posts->menu_name;
+        $menu->menu_subcategory_id = $posts->subcategory;
+        $menu->turn = $posts->turn;
+        $menu->price = $posts->price;
+        $menu->description = $posts->description;
+        $menu->create_user = 1;
+        $menu->update_user = 1;
+        $menu->update();
     }
 }
