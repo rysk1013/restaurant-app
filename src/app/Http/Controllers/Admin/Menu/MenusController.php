@@ -75,25 +75,33 @@ class MenusController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id, MenuService $menuService)
     {
-        //
+        $subcategories = $menuService->getSubcategories();
+        $menu = $menuService->getMenu($id);
+
+        return view('admin.menu.edit')
+            ->with([
+                'id' => $id,
+                'subcategories' => $subcategories,
+                'menu' => $menu,
+            ]);
+    }
+
+    public function editConfirm(MenuRequest $request, MenuService $menuService)
+    {
+        $subcategories = $menuService->getSubcategories();
+
+        return view('admin.menu.edit_confirm')
+            ->with([
+                'subcategories' => $subcategories,
+                'posts' => $request,
+            ]);
     }
 
     /**
@@ -103,9 +111,18 @@ class MenusController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id, MenuService $menuService)
     {
-        //
+        if (isset($request['modify'])) {
+            return redirect()->route('menu.edit', ['id' => $id])
+                ->withInput();
+        }
+
+        $menuService->updateMenu($request);
+
+        $request->session()->regenerateToken();
+
+        return view('admin.menu.edit_done');
     }
 
     /**
