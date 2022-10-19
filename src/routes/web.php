@@ -37,6 +37,12 @@ Route::get('/admin/menu', [App\Http\Controllers\Admin\Menu\MenusController::clas
     ->name('menu.index');
 Route::get('/admin/menu/renderList', [App\Http\Controllers\Admin\Menu\MenusController::class, 'renderList'])
     ->name('menu.renderList');
+Route::get('/admin/menu/create', [App\Http\Controllers\Admin\Menu\MenusController::class, 'create'])
+    ->name('menu.create');
+Route::post('/admin/menu/confirm', [App\Http\Controllers\Admin\Menu\MenusController::class, 'confirm'])
+    ->name('menu.confirm');
+Route::post('/admin/menu/store', [App\Http\Controllers\Admin\Menu\MenusController::class, 'store'])
+    ->name('menu.store');
 
 // お問い合わせ
 Route::get('/contact/index', [App\Http\Controllers\Contact\ContactController::class, 'index'])

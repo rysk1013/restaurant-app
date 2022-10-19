@@ -142,5 +142,9 @@ return [
         'email' => 'メールアドレス',
         'email_confirmation' => 'メールアドレス確認',
         'inquiry' => 'お問い合わせ',
+        'menu_name' => 'メニュー名',
+        'subcategory' => '小カテゴリ',
+        'turn' => '表示順',
+        'price' => '値段',
     ],
 ];
