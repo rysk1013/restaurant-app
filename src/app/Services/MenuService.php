@@ -10,7 +10,7 @@ class MenuService
     /**
      * get subcategories
      *
-     * @return array
+     * @return object
      */
     public function getSubcategories(): object
     {
@@ -30,7 +30,7 @@ class MenuService
     /**
      * get menus
      *
-     * @return array
+     * @return object
      */
     public function getMenusForAdmin(): object
     {
@@ -45,7 +45,7 @@ class MenuService
      *
      * @param string $sort
      * @param string $order
-     * @return array
+     * @return object
      */
     public function renderMenuList(string $sort, string $order): object
     {
