@@ -56,32 +56,44 @@
                             <form action="{{ route('menu.confirm') }}" method="post" class="max-w-screen-md grid sm:grid-cols-2 gap-4 mx-auto" novalidate>
                                 @csrf
                                 <div class="sm:col-span-2">
-                                    <label for="name" class="inline-block text-gray-800 text-sm sm:text-base mb-2">メニュー名</label>
-                                    <input type="text" name="name" class="w-full text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2" />
+                                    @error('menu_name')
+                                        <p class="text-red-500">{{ $message }}</p>
+                                    @enderror
+                                    <label for="menu_name" class="inline-block text-gray-800 text-sm sm:text-base mb-2">メニュー名</label>
+                                    <input type="text" name="menu_name" value="{{ old('menu_name') }}" class="w-full text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2" />
                                 </div>
 
                                 <div class="sm:col-span-2 text-gray-800">
+                                    @error('subcategory')
+                                        <p class="text-red-500">{{ $message }}</p>
+                                    @enderror
                                     <label for="subcategory" class="inline-block text-gray-800 text-sm sm:text-base mb-2">小カテゴリ</label>
                                     <select name="subcategory" class="block w-full mt-1 rounded-md border shadow-sm focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2">
-                                            <option>あいうえお</option>
-                                            <option>かきくけこ</option>
-                                            <option>さしすせそ</option>
+                                        @foreach ($subcategories as $val)
+                                            <option value="{{ $val->id }}">{{ $val->name }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
 
                                 <div class="sm:col-span-2">
+                                    @error('turn')
+                                        <p class="text-red-500">{{ $message }}</p>
+                                    @enderror
                                     <label for="turn" class="inline-block text-gray-800 text-sm sm:text-base mb-2">表示順</label>
-                                    <input type="text" name="turn" class="w-full text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2" />
+                                    <input type="text" name="turn" value="{{ old('turn') }}" class="w-full text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2" />
                                 </div>
 
                                 <div class="sm:col-span-2">
+                                    @error('price')
+                                        <p class="text-red-500">{{ $message }}</p>
+                                    @enderror
                                     <label for="price" class="inline-block text-gray-800 text-sm sm:text-base mb-2">値段</label>
-                                    <input type="text" name="price" class="w-full text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2" />
+                                    <input type="text" name="price" value="{{ old('price') }}" class="w-full text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2" />
                                 </div>
 
                                 <div class="sm:col-span-2">
                                     <label for="description" class="inline-block text-gray-800 text-sm sm:text-base mb-2">説明</label>
-                                    <textarea name="description" class="w-full text-gray-800 h-64 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2"></textarea>
+                                    <textarea name="description" class="w-full text-gray-800 h-64 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2">{{ old('description') }}</textarea>
                                 </div>
 
                                 <div class="sm:col-span-2 flex justify-between items-center">

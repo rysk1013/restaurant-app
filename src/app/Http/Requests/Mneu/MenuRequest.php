@@ -26,7 +26,7 @@ class MenuRequest extends FormRequest
         return [
             'menu_name' => ['required'],
             'subcategory' => ['required'],
-            'turn' => ['required'],
+            'turn' => ['required', 'numeric'],
             'price' => ['required','numeric'],
         ];
     }

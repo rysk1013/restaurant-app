@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin\Menu;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Requests\Mneu\MenuRequest;
 use App\Services\MenuService;
 
 class MenusController extends Controller
@@ -34,14 +35,23 @@ class MenusController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(MenuService $menuService)
     {
-        return view('admin.menu.create');
+        $subcategories = $menuService->getSubcategories();
+
+        return view('admin.menu.create')
+            ->with('subcategories', $subcategories);
     }
 
-    public function confirm()
+    public function confirm(MenuRequest $request, MenuService $menuService)
     {
-        return view('admin.menu.confirm');
+        $subcategories = $menuService->getSubcategories();
+
+        return view('admin.menu.confirm')
+            ->with([
+                'posts' => $request,
+                'subcategories' => $subcategories,
+            ]);
     }
 
     /**
@@ -52,6 +62,11 @@ class MenusController extends Controller
      */
     public function store(Request $request)
     {
+        if (isset($request['modify'])) {
+            return redirect()->route('menu.create')
+                ->withInput();
+        }
+
         return view('admin.menu.done');
     }
 
