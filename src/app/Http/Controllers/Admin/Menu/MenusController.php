@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\Mneu\MenuRequest;
 use App\Services\MenuService;
-use Illuminate\Support\Facades\DB;
 
 class MenusController extends Controller
 {
@@ -61,20 +60,16 @@ class MenusController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, MenuService $menuService)
     {
         if (isset($request['modify'])) {
             return redirect()->route('menu.create')
                 ->withInput();
         }
 
-        $menu = new Menu();
-        $menu->name = $request->menu_name;
-        $menu->menu_subcategory_id = $request->subcategory;
-        $menu->turn = $request->turn;
-        $menu->price = $request->price;
-        $menu->description = $request->description;
-        $menu->save();
+        $menuService->saveMenu($request);
+
+        $request->session()->regenerateToken();
 
         return view('admin.menu.done');
     }

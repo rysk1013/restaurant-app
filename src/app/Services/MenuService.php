@@ -55,4 +55,16 @@ class MenuService
         ->orderBy($sort, $order)
         ->get();
     }
+
+    public function saveMenu($posts)
+    {
+        $menu = new Menu();
+        $menu->name = $posts->menu_name;
+        $menu->menu_subcategory_id = $posts->subcategory;
+        $menu->turn = $posts->turn;
+        $menu->price = $posts->price;
+        $menu->description = $posts->description;
+        $menu->create_user = 1;
+        $menu->save();
+    }
 }
