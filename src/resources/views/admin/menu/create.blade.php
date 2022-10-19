@@ -69,8 +69,8 @@
                                     @enderror
                                     <label for="subcategory" class="inline-block text-gray-800 text-sm sm:text-base mb-2">小カテゴリ</label>
                                     <select name="subcategory" class="block w-full mt-1 rounded-md border shadow-sm focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2">
-                                        @foreach ($subcategories as $val)
-                                            <option value="{{ $val->id }}">{{ $val->name }}</option>
+                                        @foreach ($subcategories as $key => $val)
+                                            <option value="{{ $key }}" @selected(old('subcategory') == $key)>{{ $val['name'] }}</option>
                                         @endforeach
                                     </select>
                                 </div>

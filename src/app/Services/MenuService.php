@@ -7,12 +7,32 @@ use App\Models\MenuSubcategory;
 
 class MenuService
 {
-    public function getSubcategories()
+    /**
+     * get subcategories
+     *
+     * @return array
+     */
+    public function getSubcategories(): object
     {
-        return MenuSubcategory::get();
+        $collection = collect(MenuSubcategory::get());
+        $subcategories = $collection->mapWithKeys(function ($item) {
+            return [
+                $item['id'] => [
+                    "menu_category_id" => $item['menu_category_id'],
+                    'name'  => $item['name'],
+                ]
+            ];
+        });
+
+        return $subcategories;
     }
 
-    public function getMenusForAdmin()
+    /**
+     * get menus
+     *
+     * @return array
+     */
+    public function getMenusForAdmin(): object
     {
         return Menu::select('menus.id as m_id', 'menus.name as m_name', 'menus.created_at as m_created', 'menus.updated_at as m_updated', 'menus.turn as m_turn', 'menu_subcategories.name as s_name', 'menu_categories.name as c_name')
         ->join('menu_subcategories','menus.menu_subcategory_id','=','menu_subcategories.id')
@@ -20,7 +40,14 @@ class MenuService
         ->get();
     }
 
-    public function renderMenuList($sort, $order)
+    /**
+     * rendering menu list
+     *
+     * @param string $sort
+     * @param string $order
+     * @return array
+     */
+    public function renderMenuList(string $sort, string $order): object
     {
         return Menu::select('menus.id as m_id', 'menus.name as m_name', 'menus.created_at as m_created', 'menus.updated_at as m_updated', 'menus.turn as m_turn', 'menu_subcategories.name as s_name', 'menu_categories.name as c_name')
         ->join('menu_subcategories','menus.menu_subcategory_id','=','menu_subcategories.id')

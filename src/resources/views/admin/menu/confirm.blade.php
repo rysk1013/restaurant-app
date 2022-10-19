@@ -63,7 +63,7 @@
 
                                 <div class="sm:col-span-2">
                                     <label for="subcategory" class="inline-block text-gray-800 text-sm sm:text-base mb-2">小カテゴリ</label>
-                                    <input disabled type="text" value="{{ $subcategories[$posts['subcategory']]->name }}" class="w-full bg-gray-400 text-gray-50 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2" />
+                                    <input disabled type="text" value="{{ $subcategories[$posts['subcategory']]['name'] }}" class="w-full bg-gray-400 text-gray-50 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2" />
                                     <input type="hidden" name="subcategory" value="{{ $posts['subcategory'] }}" class="w-full bg-gray-400 text-gray-50 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2" />
                                 </div>
 
