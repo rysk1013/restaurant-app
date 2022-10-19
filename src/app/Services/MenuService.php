@@ -14,7 +14,7 @@ class MenuService
      */
     public function getSubcategories(): object
     {
-        $collection = collect(MenuSubcategory::get());
+        $collection = collect(MenuSubcategory::orderBy('turn', 'DESC')->get());
         $subcategories = $collection->mapWithKeys(function ($item) {
             return [
                 $item['id'] => [
