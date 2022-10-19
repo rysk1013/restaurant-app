@@ -43,6 +43,12 @@ Route::post('/admin/menu/confirm', [App\Http\Controllers\Admin\Menu\MenusControl
     ->name('menu.confirm');
 Route::post('/admin/menu/store', [App\Http\Controllers\Admin\Menu\MenusController::class, 'store'])
     ->name('menu.store');
+Route::get('/admin/menu/{id}/edit', [App\Http\Controllers\Admin\Menu\MenusController::class, 'edit'])
+    ->name('menu.edit');
+Route::post('/admin/menu/{id}/confirm', [App\Http\Controllers\Admin\Menu\MenusController::class, 'editConfirm'])
+    ->name('menu.edit.confirm');
+Route::post('/admin/menu/{id}/update', [App\Http\Controllers\Admin\Menu\MenusController::class, 'update'])
+    ->name('menu.update');
 
 // お問い合わせ
 Route::get('/contact/index', [App\Http\Controllers\Contact\ContactController::class, 'index'])

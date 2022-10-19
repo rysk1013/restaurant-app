@@ -28,6 +28,16 @@ class MenuService
     }
 
     /**
+     * get menu
+     *
+     * @return object
+     */
+    public function getMenu(int $id): object
+    {
+        return Menu::where('id', $id)->firstOrFail();
+    }
+
+    /**
      * get menus
      *
      * @return object
