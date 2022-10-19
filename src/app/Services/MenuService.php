@@ -101,4 +101,15 @@ class MenuService
         $menu->update_user = 1;
         $menu->update();
     }
+
+    /**
+     * delete menu
+     *
+     * @param [int] $id
+     * @return void
+     */
+    public function deleteMenu(int $id)
+    {
+        Menu::where('id', $id)->delete();
+    }
 }

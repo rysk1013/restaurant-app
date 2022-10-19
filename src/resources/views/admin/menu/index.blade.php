@@ -102,7 +102,9 @@
                                         <td class="p-2 md:border md:border-grey-500 text-center block md:table-cell">{{ $menu->m_updated }}</td>
                                         <td class="p-2 md:border md:border-grey-500 text-center block md:table-cell">
                                             <a href="{{ route('menu.edit', ['id' => $menu->m_id]) }}" class="bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-2 border border-green-500 rounded">編集</a>
-                                            <form action="#" method="post" novalidate class="inline-block">
+                                            <form action="{{ route('menu.destroy', ['id' => $menu->m_id]) }}" method="post" novalidate class="inline-block">
+                                                @csrf
+                                                @method('delete')
                                                 <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 border border-red-500 rounded" onclick="return  confirm('本当に削除しますか？')">削除</button>
                                             </form>
                                         </td>

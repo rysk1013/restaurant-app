@@ -49,6 +49,8 @@ Route::post('/admin/menu/{id}/confirm', [App\Http\Controllers\Admin\Menu\MenusCo
     ->name('menu.edit.confirm');
 Route::post('/admin/menu/{id}/update', [App\Http\Controllers\Admin\Menu\MenusController::class, 'update'])
     ->name('menu.update');
+Route::delete('/admin/menu/{id}/delete', [App\Http\Controllers\Admin\Menu\MenusController::class, 'destroy'])
+    ->name('menu.destroy');
 
 // お問い合わせ
 Route::get('/contact/index', [App\Http\Controllers\Contact\ContactController::class, 'index'])

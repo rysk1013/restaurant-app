@@ -131,8 +131,10 @@ class MenusController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id, MenuService $menuService)
     {
-        //
+        $menuService->deleteMenu($id);
+
+        return redirect()->route('menu.index');
     }
 }
