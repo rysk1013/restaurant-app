@@ -48,19 +48,32 @@
                         <!-- buttons - end -->
                     </header>
 
-                    <section class="flex flex-col lg:flex-row justify-between gap-6 sm:gap-10 md:gap-16">
-                        <!-- content - start -->
-                        <div class="xl:w-5/12 flex flex-col justify-center sm:text-center lg:text-left lg:py-12 xl:py-24">
-                            <h1 class="text-center text-black-800 text-4xl sm:text-5xl md:text-6xl font-bold mb-8 md:mb-12">レストランサイト</h1>
+                    <div class="bg-white dark:bg-gray-900">
+                        <div class="container px-6 py-8 mx-auto">
+                            @foreach ($categories as $category_id => $category)
+                                <h1 class="mb-4 text-3xl font-semibold text-center text-gray-800 capitalize lg:text-4xl dark:text-white">{{ $category['name'] }}</h1>
+                                @foreach ($subcategories as $subcategory_id => $subcategory)
+                                    @if ($category_id == $subcategory['menu_category_id'])
+                                        <h3 class="text-2xl text-center text-gray-500 dark:text-gray-300">{{ $subcategory['name'] }}</h3>
+                                        @foreach ($menus as $menu)
+                                            @if ($subcategory_id == $menu['m_subcategory_id'])
+                                                <div class="mt-6 space-y-8 xl:mt-12">
+                                                    <div class="flex items-center justify-between max-w-2xl mb-6 px-8 py-4 mx-auto border rounded-xl dark:border-gray-700">
+                                                        <div class="flex items-center">
+                                                            <div class="flex flex-col items-center space-y-1">
+                                                                <p class="text-base font-medium text-gray-700 sm:text-2xl dark:text-gray-200">{{ $menu['m_name'] }}</p>
+                                                            </div>
+                                                        </div>
+                                                        <p class="text-base font-medium text-gray-700 sm:text-2xl dark:text-gray-200">{{ $menu['m_price'] }}円</p>
+                                                    </div>
+                                                </div>
+                                            @endif
+                                        @endforeach
+                                    @endif
+                                @endforeach
+                            @endforeach
                         </div>
-                        <!-- content - end -->
-
-                        <!-- image - start -->
-                        <div class="xl:w-5/12 h-48 lg:h-auto bg-gray-100 overflow-hidden shadow-lg rounded-lg">
-                            <img src="https://images.unsplash.com/photo-1618004912476-29818d81ae2e?auto=format&q=75&fit=crop&w=1000" loading="lazy" alt="Photo by Fakurian Design" class="w-full h-full object-cover object-center" />
-                        </div>
-                        <!-- image - end -->
-                    </section>
+                    </div>
                 </div>
             </div>
         </main>
