@@ -2,11 +2,31 @@
 
 namespace App\Services;
 
-use App\Models\Menu;
+use App\Models\MenuCategory;
 use App\Models\MenuSubcategory;
+use App\Models\Menu;
 
 class MenuService
 {
+    /**
+     * get categories
+     *
+     * @return object
+     */
+    public function getCategories(): object
+    {
+        $collection = collect(MenuCategory::orderBy('turn', 'ASC')->get());
+        $categories = $collection->mapWithKeys(function ($item) {
+            return [
+                $item['id'] => [
+                    'name'  => $item['name'],
+                ],
+            ];
+        });
+
+        return $categories;
+    }
+
     /**
      * get subcategories
      *
@@ -14,13 +34,13 @@ class MenuService
      */
     public function getSubcategories(): object
     {
-        $collection = collect(MenuSubcategory::orderBy('turn', 'DESC')->get());
+        $collection = collect(MenuSubcategory::orderBy('turn', 'ASC')->get());
         $subcategories = $collection->mapWithKeys(function ($item) {
             return [
                 $item['id'] => [
-                    "menu_category_id" => $item['menu_category_id'],
+                    'menu_category_id' => $item['menu_category_id'],
                     'name'  => $item['name'],
-                ]
+                ],
             ];
         });
 
@@ -35,6 +55,20 @@ class MenuService
     public function getMenu(int $id): object
     {
         return Menu::where('id', $id)->firstOrFail();
+    }
+
+    /**
+     * get menus
+     *
+     * @return object
+     */
+    public function getMenusForUser(): object
+    {
+        return Menu::select('menus.id as m_id', 'menus.name as m_name', 'menus.menu_subcategory_id as m_subcategory_id', 'menus.price as m_price', 'menus.created_at as m_created', 'menus.updated_at as m_updated', 'menus.turn as m_turn', 'menu_subcategories.name as s_name', 'menu_categories.name as c_name')
+        ->join('menu_subcategories','menus.menu_subcategory_id','=','menu_subcategories.id')
+        ->join('menu_categories', 'menu_subcategories.menu_category_id', '=', 'menu_categories.id')
+        ->orderBy('menus.turn', 'ASC')
+        ->get();
     }
 
     /**

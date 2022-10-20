@@ -52,6 +52,10 @@ Route::post('/admin/menu/{id}/update', [App\Http\Controllers\Admin\Menu\MenusCon
 Route::delete('/admin/menu/{id}/delete', [App\Http\Controllers\Admin\Menu\MenusController::class, 'destroy'])
     ->name('menu.destroy');
 
+// クライアントページ
+Route::get('/menu', [App\Http\Controllers\MainController::class, 'menu'])
+    ->name('menu');
+
 // お問い合わせ
 Route::get('/contact/index', [App\Http\Controllers\Contact\ContactController::class, 'index'])
     ->name('contact.index');
