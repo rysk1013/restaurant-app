@@ -84,8 +84,8 @@
                                 @foreach ($earnings as $item)
                                     <tr class="bg-white border border-grey-500 md:border-none block md:table-row">
                                         <td class="p-2 md:border md:border-grey-500 text-center block md:table-cell">{{ $item['date'] }}</td>
-                                        <td class="p-2 md:border md:border-grey-500 text-center block md:table-cell">{{ $item['order_num'] }}</td>
-                                        <td class="p-2 md:border md:border-grey-500 text-center block md:table-cell">{{ $item['order_price'] }}</td>
+                                        <td class="p-2 md:border md:border-grey-500 text-center block md:table-cell">{{ $item['order_num'] }}個</td>
+                                        <td class="p-2 md:border md:border-grey-500 text-center block md:table-cell">{{ $item['order_price'] }}円</td>
                                         <td class="p-2 md:border md:border-grey-500 text-center block md:table-cell">
                                             <a href="#" class="bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-2 border border-green-500 rounded">編集</a>
                                             <form action="#" method="post" novalidate class="inline-block">
