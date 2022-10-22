@@ -45,11 +45,11 @@
 
                 <main>
                     <div class="mb-8 w-full">
-                        <form action="#" method="GET" novalidate>
+                        <form action="{{ route('earnings.index') }}" method="GET" novalidate>
                             <div class="max-w-xl">
                                 <div class="flex space-x-4">
                                     <div class="flex rounded-md overflow-hidden w-full">
-                                        <input type="month" class="rounded-md rounded-r-none" />
+                                        <input name="target" type="month" class="rounded-md rounded-r-none" />
                                         <button class="bg-indigo-600 text-white px-6 text-lg font-semibold py-4 rounded-r-md">表示</button>
                                     </div>
                                 </div>
@@ -80,11 +80,12 @@
                             </tr>
                         </thead>
                         <tbody class="block md:table-row-group">
-                            {{-- @if (!empty($menus)) --}}
+                            @if (isset($earnings))
+                                @foreach ($earnings as $item)
                                     <tr class="bg-white border border-grey-500 md:border-none block md:table-row">
-                                        <td class="p-2 md:border md:border-grey-500 text-center block md:table-cell"></td>
-                                        <td class="p-2 md:border md:border-grey-500 text-center block md:table-cell"></td>
-                                        <td class="p-2 md:border md:border-grey-500 text-center block md:table-cell"></td>
+                                        <td class="p-2 md:border md:border-grey-500 text-center block md:table-cell">{{ $item['date'] }}</td>
+                                        <td class="p-2 md:border md:border-grey-500 text-center block md:table-cell">{{ $item['order_num'] }}</td>
+                                        <td class="p-2 md:border md:border-grey-500 text-center block md:table-cell">{{ $item['order_price'] }}</td>
                                         <td class="p-2 md:border md:border-grey-500 text-center block md:table-cell">
                                             <a href="#" class="bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-2 border border-green-500 rounded">編集</a>
                                             <form action="#" method="post" novalidate class="inline-block">
@@ -94,12 +95,13 @@
                                             </form>
                                         </td>
                                     </tr>
-                            {{-- @else --}}
+                                @endforeach
+                            @else
                                 {{-- メニューがないときの表示 --}}
                                 <tr class="bg-white border border-grey-500 md:border-none block md:table-row">
                                     <td colspan="8" class="p-2 md:border md:border-grey-500 text-center block md:table-cell">メニューがありません。</td>
                                 </tr>
-                            {{-- @endif --}}
+                            @endif
                         </tbody>
                     </table>
                 </main>

@@ -16,4 +16,9 @@ class Earnings extends Model
         'create_user',
         'update_user',
     ];
+
+    public function menus()
+    {
+        return $this->hasMany(Menu::class);
+    }
 }
