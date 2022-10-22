@@ -20,6 +20,9 @@ class EarningsController extends Controller
         $earnings = $earningsService->getEarnings($date);
 
         return view('admin.earnings.index')
-            ->with('earnings', $earnings);
+            ->with([
+                'earnings' => $earnings,
+                'target' => $request->target,
+            ]);
     }
 }
