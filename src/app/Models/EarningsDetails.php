@@ -6,28 +6,27 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Menu extends Model
+class EarningsDetails extends Model
 {
     use HasFactory;
     use softDeletes;
 
     protected $dates = ['deleted_at'];
     protected $fillable = [
-        'name',
-        'turn',
-        'price',
-        'description',
+        'menu_name',
+        'menu_price',
+        'order_num',
         'create_user',
         'update_user',
     ];
 
-    public function menuSubcategory()
+    public function earnings()
     {
-        return $this->belongsTo(MenuSubcategory::class);
+        return $this->belongsTo(Earnings::class);
     }
 
-    public function earningsDetails()
+    public function menus()
     {
-        return $this->hasMany(EarningsDetails::class);
+        return $this->hasMany(Menus::class);
     }
 }

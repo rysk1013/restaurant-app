@@ -52,6 +52,10 @@ Route::post('/admin/menu/{id}/update', [App\Http\Controllers\Admin\Menu\MenusCon
 Route::delete('/admin/menu/{id}/delete', [App\Http\Controllers\Admin\Menu\MenusController::class, 'destroy'])
     ->name('menu.destroy');
 
+// 売上管理
+Route::get('/admin/earnings', [App\Http\Controllers\Admin\Earnings\EarningsController::class, 'index'])
+    ->name('earnings.index');
+
 // クライアントページ
 Route::get('/menu', [App\Http\Controllers\MainController::class, 'menu'])
     ->name('menu');
