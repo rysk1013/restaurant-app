@@ -13,8 +13,6 @@ class Earnings extends Model
 
     protected $dates = ['deleted_at'];
     protected $fillable = [
-        'name',
-        'turn',
         'create_user',
         'update_user',
     ];
