@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\Menu;
 use App\Models\Earnings;
 
 class EarningsService
@@ -15,5 +16,27 @@ class EarningsService
                         ->where('earnings.date', 'like', '%' . $date . '%')
                         ->groupBy('earnings.id', 'earnings.date')
                         ->get();
+    }
+
+    public function getMneus()
+    {
+        $collection =
+            collect(
+                Menu::select('menus.id as m_id', 'menus.name as m_name', 'menu_subcategories.name as s_name')
+                ->join('menu_subcategories','menus.menu_subcategory_id','=','menu_subcategories.id')
+                ->orderBy('menu_subcategories.id', 'ASC')
+                ->get()
+            );
+
+        $menus = $collection->mapWithKeys(function ($item) {
+            return [
+                $item['m_id'] => [
+                    'menu_subcategory_name' => $item['s_name'],
+                    'menu_name' => $item['m_name'],
+                ],
+            ];
+        });
+
+        return $menus;
     }
 }

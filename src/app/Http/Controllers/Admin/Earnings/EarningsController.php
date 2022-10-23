@@ -25,4 +25,25 @@ class EarningsController extends Controller
                 'target' => $request->target,
             ]);
     }
+
+    public function create(Request $request, EarningsService $earningsService)
+    {
+        $count = 1;
+
+        if (isset($request->add)) {
+            $count++;
+        }
+
+        if (isset($request->remove)) {
+            $count--;
+        }
+
+        $menus = $earningsService->getMneus();
+
+        return view('admin.earnings.create')
+            ->with([
+                'menus' => $menus,
+                'count' => $count,
+            ]);
+    }
 }
