@@ -29,16 +29,15 @@ class EarningsController extends Controller
     public function create(Request $request, EarningsService $earningsService)
     {
         $count = 1;
-
-        if (isset($request->add)) {
-            $count++;
-        }
-
-        if (isset($request->remove)) {
-            $count--;
-        }
-
         $menus = $earningsService->getMneus();
+
+        if (isset($request['add'])) {
+            $count = $request['count'] + 1;
+        }
+
+        if (isset($request['remove'])) {
+            $count = $request['count'] - 1;
+        }
 
         return view('admin.earnings.create')
             ->with([

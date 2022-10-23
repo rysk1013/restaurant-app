@@ -45,6 +45,7 @@
 
                 <main>
                     <form action="#" method="post" novalidate>
+                        @csrf
                         <table class="mb-5 min-w-full border-collapse block md:table">
                             <thead class="block md:table-header-group">
                                 <tr class="border border-grey-500 md:border-none block md:table-row absolute -top-full md:top-auto -left-full md:left-auto  md:relative ">
@@ -71,19 +72,22 @@
                                             </select>
                                         </td>
                                         <td class="p-2 md:border md:border-grey-500 text-center block md:table-cell">
-                                            <input type="text" name="order_num" class="w-full text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2" />
+                                            <input type="text" name="" class="w-full text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2" />
                                         </td>
                                     </tr>
                                 @endfor
                             </tbody>
                         </table>
                         <div class="m-auto">
-                            <button name="add" class="px-4 py-2 rounded-md text-sm font-medium border-0 focus:outline-none focus:ring transition text-white bg-blue-500 hover:bg-blue-600 active:bg-blue-700 focus:ring-blue-300" type="submit">１行追加</button>
-                            <button name="remove" class="px-4 py-2 rounded-md text-sm font-medium border-0 focus:outline-none focus:ring transition text-white bg-red-500 hover:bg-red-600 active:bg-red-700 focus:ring-red-300" type="submit">１行削除</button>
+                            <button name="add" formaction="{{ route('earnings.create') }}" class="px-4 py-2 rounded-md text-sm font-medium border-0 focus:outline-none focus:ring transition text-white bg-blue-500 hover:bg-blue-600 active:bg-blue-700 focus:ring-blue-300" type="submit">１行追加</button>
+                            @if ($count != 1)
+                                <button name="remove" formaction="{{ route('earnings.create') }}" class="px-4 py-2 rounded-md text-sm font-medium border-0 focus:outline-none focus:ring transition text-white bg-red-500 hover:bg-red-600 active:bg-red-700 focus:ring-red-300" type="submit">１行削除</button>
+                            @endif
                         </div>
                         <div class="sm:col-span-2 flex justify-between items-center">
                             <button name="send" type="submit" class="ml-auto inline-block bg-green-500 hover:bg-green-600 active:bg-green-700 focus-visible:ring bg-green-300 text-white text-sm md:text-base font-semibold text-center rounded-lg outline-none transition duration-100 px-8 py-3">内容を確認する</button>
                         </div>
+                        <input type="hidden" name="count" value="{{ $count }}">
                     </form>
                 </main>
             </div>
