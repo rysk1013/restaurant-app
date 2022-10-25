@@ -28,30 +28,35 @@ class EarningsController extends Controller
 
     public function create(Request $request, EarningsService $earningsService)
     {
+        $date = Carbon::today()->format('Y-m-d');
         $data = [];
         $count = 1;
         $menus = $earningsService->getMneus();
 
         if (isset($request['modify'])) {
-            $count = $request->count;
+            $date = $request->date;
             $data = $request->details;
+            $count = $request->count;
         }
 
         if (isset($request['add'])) {
-            $count = $request['count'] + 1;
+            $date = $request->date;
             $data = $request->details;
+            $count = $request['count'] + 1;
         }
 
         if (isset($request['remove'])) {
-            $count = $request['count'] - 1;
+            $date = $request->date;
             $data = $request->details;
+            $count = $request['count'] - 1;
         }
 
         return view('admin.earnings.create')
             ->with([
                 'menus' => $menus,
-                'count' => $count,
+                'date' => $date,
                 'data' => $data,
+                'count' => $count,
             ]);
     }
 
@@ -61,6 +66,7 @@ class EarningsController extends Controller
 
         return view('admin.earnings.confirm')
             ->with([
+                'date' => $request->date,
                 'date' => $request->date,
                 'count' => $request->count,
                 'menus' => $menus,

@@ -118,7 +118,7 @@
                                         </div>
                                     </th>
                                     <td class="p-2 md:border md:border-grey-500 text-center block md:table-cell">{{ $total_order_num }}個</td>
-                                    <input type="hidden" value="{{ $total_order_num }}">
+                                    <input type="hidden" name="$total_order_num" value="{{ $total_order_num }}">
                                 </tr>
                                 <tr class="border border-grey-500 md:border-none block md:table-row absolute -top-full md:top-auto -left-full md:left-auto  md:relative ">
                                     <th class="w-1/4 bg-gray-600 p-2 text-white font-bold md:border md:border-grey-500 text-center block md:table-cell">
@@ -127,7 +127,7 @@
                                         </div>
                                     </th>
                                     <td class="p-2 md:border md:border-grey-500 text-center block md:table-cell">{{ $total_price }}円</td>
-                                    <input type="hidden" value="{{ $total_price }}">
+                                    <input type="hidden" name="total_price" value="{{ $total_price }}">
                                 </tr>
                             </tbody>
                         </table>

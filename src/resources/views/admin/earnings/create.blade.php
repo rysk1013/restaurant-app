@@ -55,7 +55,7 @@
                         <div class="mb-5 max-w-xl">
                             <div class="flex space-x-4">
                                 <div class="flex rounded-md overflow-hidden w-full">
-                                    <input name="date" type="date" class="rounded-md" />
+                                    <input name="date" type="date" value="{{ $date }}" class="rounded-md" />
                                 </div>
                             </div>
                         </div>
