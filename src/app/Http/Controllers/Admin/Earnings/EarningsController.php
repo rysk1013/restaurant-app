@@ -28,21 +28,44 @@ class EarningsController extends Controller
 
     public function create(Request $request, EarningsService $earningsService)
     {
+        $data = [];
         $count = 1;
         $menus = $earningsService->getMneus();
 
+        if (isset($request['modify'])) {
+            $count = $request->count;
+            $data = $request->details;
+        }
+
         if (isset($request['add'])) {
             $count = $request['count'] + 1;
+            $data = $request->details;
         }
 
         if (isset($request['remove'])) {
             $count = $request['count'] - 1;
+            $data = $request->details;
         }
 
         return view('admin.earnings.create')
             ->with([
                 'menus' => $menus,
                 'count' => $count,
+                'data' => $data,
+            ]);
+    }
+
+    public function confirm(Request $request, EarningsService $earningsService)
+    {
+        list($menus, $total_price, $total_order_num) = $earningsService->generateEarningsDetails($request);
+
+        return view('admin.earnings.confirm')
+            ->with([
+                'date' => $request->date,
+                'count' => $request->count,
+                'menus' => $menus,
+                'total_price' => $total_price,
+                'total_order_num' => $total_order_num,
             ]);
     }
 }

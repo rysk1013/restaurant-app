@@ -44,8 +44,21 @@
                 </header>
 
                 <main>
-                    <form action="#" method="post" novalidate>
+                    <!-- text - start -->
+                    <div class="mb-10 md:mb-16">
+                        <h2 class="text-gray-800 text-2xl lg:text-3xl font-bold text-center mb-4 md:mb-6">新規登録</h2>
+                    </div>
+                    <!-- text - end -->
+
+                    <form action="{{ route('earnings.confirm') }}" method="post" novalidate>
                         @csrf
+                        <div class="mb-5 max-w-xl">
+                            <div class="flex space-x-4">
+                                <div class="flex rounded-md overflow-hidden w-full">
+                                    <input name="date" type="date" class="rounded-md" />
+                                </div>
+                            </div>
+                        </div>
                         <table class="mb-5 min-w-full border-collapse block md:table">
                             <thead class="block md:table-header-group">
                                 <tr class="border border-grey-500 md:border-none block md:table-row absolute -top-full md:top-auto -left-full md:left-auto  md:relative ">
@@ -65,14 +78,14 @@
                                 @for ($i = 0; $i < $count; $i++)
                                     <tr class="bg-white border border-grey-500 md:border-none block md:table-row">
                                         <td class="p-2 md:border md:border-grey-500 text-center block md:table-cell">
-                                            <select name="" class="block w-full mt-1 rounded-md border shadow-sm focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2">
+                                            <select name="details[{{ $i }}][menu_id]" class="block w-full mt-1 rounded-md border shadow-sm focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2">
                                                 @foreach ($menus as $key => $val)
-                                                    <option value="{{ $key }}">{{ $val['menu_name'] }}({{ $val['menu_subcategory_name'] }})</option>
+                                                    <option value="{{ $key }}" @if (isset($data[$i]) && $data[$i]['menu_id'] == $key) selected @endif>{{ $val['menu_name'] }}({{ $val['menu_subcategory_name'] }})</option>
                                                 @endforeach
                                             </select>
                                         </td>
                                         <td class="p-2 md:border md:border-grey-500 text-center block md:table-cell">
-                                            <input type="text" name="" class="w-full text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2" />
+                                            <input type="text" name="details[{{ $i }}][order_num]" @if (isset($data[$i]['order_num'])) value="{{ $data[$i]['order_num'] }}" @endif class="w-full text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2" />
                                         </td>
                                     </tr>
                                 @endfor
