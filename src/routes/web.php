@@ -55,6 +55,12 @@ Route::delete('/admin/menu/{id}/delete', [App\Http\Controllers\Admin\Menu\MenusC
 // 売上管理
 Route::get('/admin/earnings', [App\Http\Controllers\Admin\Earnings\EarningsController::class, 'index'])
     ->name('earnings.index');
+Route::match(['get', 'post'], '/admin/earnings/create', [App\Http\Controllers\Admin\Earnings\EarningsController::class, 'create'])
+    ->name('earnings.create');
+Route::post('/admin/earnings/confirm', [App\Http\Controllers\Admin\Earnings\EarningsController::class, 'confirm'])
+    ->name('earnings.confirm');
+Route::post('/admin/earnings/store', [App\Http\Controllers\Admin\Earnings\EarningsController::class, 'store'])
+    ->name('earnings.store');
 
 // クライアントページ
 Route::get('/menu', [App\Http\Controllers\MainController::class, 'menu'])
