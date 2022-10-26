@@ -50,7 +50,7 @@
                     </div>
                     <!-- text - end -->
 
-                    <form action="#" method="post" novalidate>
+                    <form action="{{ route('earnings.store') }}" method="post" novalidate>
                         @csrf
                         <div class="mb-5 max-w-xl">
                             <div class="flex space-x-4">

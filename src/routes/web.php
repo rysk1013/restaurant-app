@@ -59,6 +59,8 @@ Route::match(['get', 'post'], '/admin/earnings/create', [App\Http\Controllers\Ad
     ->name('earnings.create');
 Route::post('/admin/earnings/confirm', [App\Http\Controllers\Admin\Earnings\EarningsController::class, 'confirm'])
     ->name('earnings.confirm');
+Route::post('/admin/earnings/store', [App\Http\Controllers\Admin\Earnings\EarningsController::class, 'store'])
+    ->name('earnings.store');
 
 // クライアントページ
 Route::get('/menu', [App\Http\Controllers\MainController::class, 'menu'])

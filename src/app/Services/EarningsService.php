@@ -2,8 +2,10 @@
 
 namespace App\Services;
 
+use Illuminate\Support\Facades\DB;
 use App\Models\Menu;
 use App\Models\Earnings;
+use App\Models\EarningsDetails;
 
 class EarningsService
 {
@@ -59,5 +61,35 @@ class EarningsService
         }
 
         return [$menus, $total_price, $total_order_num];
+    }
+
+    public function saveEarnings($posts)
+    {
+        try {
+            DB::beginTransaction();
+
+            $earnings = new Earnings();
+            $earnings->date = $posts->date;
+            $earnings->create_user = 1;
+            $earnings->save();
+            $this->saveEarningsDetails($earnings->id, $posts);
+
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollBack();
+        }
+    }
+
+    public function saveEarningsDetails($earnings_id, $posts)
+    {
+        for ($i = 0; $i < $posts['count']; $i++) {
+            $earningsDetail = new EarningsDetails();
+            $earningsDetail->earnings_id = $earnings_id;
+            $earningsDetail->menu_id = $posts['details'][$i]['menu_id'];
+            $earningsDetail->menu_name = $posts['details'][$i]['menu_name'];
+            $earningsDetail->order_price = $posts['details'][$i]['subtotal_price'];
+            $earningsDetail->order_num = $posts['details'][$i]['order_num'];
+            $earningsDetail->save();
+        }
     }
 }

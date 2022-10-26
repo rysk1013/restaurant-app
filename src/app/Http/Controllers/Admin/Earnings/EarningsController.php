@@ -73,4 +73,10 @@ class EarningsController extends Controller
                 'total_order_num' => $total_order_num,
             ]);
     }
+
+    public function store(Request $request, EarningsService $earningsService)
+    {
+        $earningsService->saveEarnings($request);
+        return view('admin.earnings.done');
+    }
 }
