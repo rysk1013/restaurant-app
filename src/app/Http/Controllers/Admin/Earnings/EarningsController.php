@@ -67,7 +67,6 @@ class EarningsController extends Controller
         return view('admin.earnings.confirm')
             ->with([
                 'date' => $request->date,
-                'date' => $request->date,
                 'count' => $request->count,
                 'menus' => $menus,
                 'total_price' => $total_price,
